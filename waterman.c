@@ -41,7 +41,7 @@ void initialize(char seq1[],char seq2 []){
          if(val<0)
          	M[i][0] = 0;
          else
-			M[i][0] = val;
+		M[i][0] = val;
     }
 
     for (int j = 0; j < seq2len + 1; j++){
@@ -51,7 +51,7 @@ void initialize(char seq1[],char seq2 []){
         if(val<0)
          	M[0][j] = 0;
          else
-			M[0][j] = val;
+		M[0][j] = val;
     }
 
 }
@@ -60,7 +60,6 @@ void initialize(char seq1[],char seq2 []){
 void ScoreTable(char seq1[],char seq2 []){
     int seq1len = strlen(seq1);
     int seq2len = strlen(seq2);
-    int a = -2;
     for (int i = 1; i < seq1len + 1; i++)
     {
         for (int j = 1; j < seq2len + 1; j++)
