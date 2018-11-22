@@ -3,28 +3,35 @@
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
-int M[20][20];
-int GAP = -2; 
-int MATCH = 5;
-int MISSMATCH = - 1;
+int M[200][200];
+int GAP; 
+int MATCH;
+int MISSMATCH;
 
 void initialize(char[],char[]);
 void ScoreTable(char[],char[]);
-void TraceBack(char[],char[]);
+void PrintTable(char[],char[]);
 
 
 
 int main(){
 
-    char seq1[10]="TCCTA"; //First Sequence
-    char seq2[10]="TCATA"; //Second Sequence
-
-
-    printf("%s\t%s",seq1,seq2);
+    char seq1[100]; //First Sequence
+    char seq2[100]; //Second Sequence
+    printf("Enter First sequence\n");
+    scanf("%s",seq1);
+    printf("Enter Second sequence\n");
+    scanf("%s",seq2); 
+    printf("Enter the GAP value\n");
+    scanf("%d",&GAP);
+    printf("Enter the MATCH value\n");
+    scanf("%d",&MATCH);
+    printf("Enter the MISSMATCH value\n");
+    scanf("%d",&MISSMATCH);
 
     initialize(seq1,seq2);
     ScoreTable(seq1,seq2);
-    TraceBack(seq1,seq2);
+    PrintTable(seq1,seq2);
     return 0;
 }
 
@@ -87,45 +94,10 @@ void ScoreTable(char seq1[],char seq2 []){
     }
 }
 
-//Step 3: TraceBack function
-void TraceBack(char seq1[],char seq2 []){
-
-    char AlignA,AlignB;
-    int m = strlen(seq1) - 1;
-    int n = strlen(seq2) - 1;
+//Step 3: PrintTable function
+void PrintTable(char seq1[],char seq2 []){
     int seq1len = strlen(seq1);
     int seq2len = strlen(seq2);
-
-    while (m > 0 && n > 0){
-        int score = 0;
-
-        if(seq1[m-1] == seq2[n-1]){
-            score = MATCH;
-        }
-        else{
-            score = MISSMATCH;
-        }
-        if (m > 0 && n > 0 && M[m][n] == M[m - 1][n - 1] + score)
-        {
-            AlignA = seq1[n - 1] + AlignA;
-            AlignB = seq2[m - 1] + AlignB;
-            m = m - 1;
-            n = n - 1;
-        }
-        else if (n > 0 && M[m][n] == M[m][n - 1] - 2)
-        {
-            AlignA = seq1[n - 1] + AlignA;
-            AlignB = '-' + AlignB;
-            n = n - 1;
-        }
-        else 
-        {
-            AlignA = '-' + AlignA;
-            AlignB = seq2[m - 1] + AlignB;
-            m = m - 1;
-        }
-    }
-    
     for (int i = 0; i < seq1len + 1; i++){
         printf("\n");
         for (int j = 0; j < seq2len + 1; j++){
