@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <string.h>
-
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
-
-int M[200][200];
-int GAP; 
-int MATCH;
-int MISSMATCH;
 
 void initialize(char seq1[],char seq2 []);
 void ScoreTable(char seq1[],char seq2 []);
 void PrintTable(char seq1[],char seq2 []);
 
+
+int M[200][200];
+int GAP; 
+int MATCH;
+int MISSMATCH;
 
 
 int main(){
