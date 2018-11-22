@@ -8,9 +8,9 @@ int GAP;
 int MATCH;
 int MISSMATCH;
 
-void initialize(char[],char[]);
-void ScoreTable(char[],char[]);
-void PrintTable(char[],char[]);
+void initialize(char seq1[],char seq2 []);
+void ScoreTable(char seq1[],char seq2 []);
+void PrintTable(char seq1[],char seq2 []);
 
 
 
